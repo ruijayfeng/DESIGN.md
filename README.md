@@ -14,7 +14,7 @@
 
 <br>
 
-**收藏和蒸馏各种优秀的设计风格，形成可复用的设计语言规范。**
+Distilling production-grade design systems into reusable specifications.
 
 <br>
 
@@ -24,52 +24,46 @@
 
 <br>
 
-## 📖 What is this?
+## Purpose
 
-每种设计风格都有自己的灵魂。这个仓库做的事情是：
-
-1. **发现** — 从优秀的生产级产品中识别设计语言
-2. **蒸馏** — 提取色彩、字体、组件、纹理、动画等核心要素
-3. **文档化** — 写成可执行的设计规范（不是灵感板，是 spec）
-
-每个文件都是一个独立的、可直接落地的设计系统。
+Great design lives inside production CSS — buried in variable names, class conventions, and theme-switching logic. This repo extracts that knowledge into standalone specs: not moodboards, not inspiration galleries, but executable design documents you can copy into a project and ship.
 
 <br>
 
-## 📚 Design Languages
+## Languages
 
 <br>
 
 | File | Style | Origin | Key Traits |
 |------|-------|--------|------------|
-| [`pop-brutalism-DESIGN.md`](./pop-brutalism-DESIGN.md) | Pop-Brutalism | [app.ziwei.pro](https://app.ziwei.pro) | Hard shadows · Halftone · Neon · Micro-rotation |
+| [`pop-brutalism-DESIGN.md`](./pop-brutalism-DESIGN.md) | Pop-Brutalism | [app.ziwei.pro](https://app.ziwei.pro) | Hard shadows, halftone textures, neon palette, micro-rotation |
 | *more coming soon* | | | |
 
 <br>
 
-## 🔧 How to Use
+## Structure
+
+Each DESIGN.md contains:
+
+- **Color Tokens** — CSS custom properties, ready to copy
+- **Typography** — font stacks with usage context
+- **Components** — styling and interaction patterns
+- **Textures** — background effects in pure CSS
+- **Animations** — keyframes and when to use them
+- **Theme Variants** — switching strategies (if applicable)
+- **Quick Start** — minimal code snippet to get started
 
 <br>
 
-每份 DESIGN.md 都包含：
+## Usage
 
-- **Color Tokens** — 可直接复制的 CSS 变量
-- **Typography** — 字体栈和使用场景
-- **Components** — 组件样式和交互模式
-- **Textures** — 纹理/背景的 CSS 实现
-- **Animations** — 动画定义和使用时机
-- **Theme Variants** — 主题切换策略（如有）
-- **Quick Start** — 最小可用代码片段
-
-直接 copy 对应的 CSS 变量和组件样式到你的项目里就能用。
+Pick a spec. Copy the tokens and components into your project. Adjust the values to fit your brand. Ship it.
 
 <br>
 
-## 📜 License
+## License
 
-<br>
-
-[CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) — 自由使用和修改，注明出处即可。
+[CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) — use freely, attribute the source.
 
 <br>
 
