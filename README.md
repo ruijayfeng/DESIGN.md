@@ -1,5 +1,3 @@
-# DESIGN.md
-
 <br>
 
 <div align="center">
