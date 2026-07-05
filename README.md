@@ -2,7 +2,7 @@
 
 <div align="center">
 
-[![Typing SVG](https://readme-typing-svg.demolab.com?font=ZCOOL+KuaiLe&size=32&duration=2500&pause=500&color=FFE53D&center=true&vCenter=true&multiline=true&repeat=true&width=400&height=70&lines=A+Collection+of+Design+Languages)](https://git.io/typing-svg)
+[![Typing SVG](https://readme-typing-svg.demolab.com?font=ZCOOL+KuaiLe&size=32&duration=2500&pause=500&color=FFE53D&center=true&vCenter=true&multiline=true&repeat=true&width=600&height=90&lines=A+Collection+of+Design+Languages)](https://git.io/typing-svg)
 
 <br>
 
