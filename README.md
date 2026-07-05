@@ -18,7 +18,6 @@ Distilling production-grade design systems into reusable specifications.
 
 <br>
 
-[![capsule render](https://capsule-render.vercel.app/api?animation=fadeIn&color=gradient&customColorList=0a0a0f,ff3df4,3dd5ff&type=wave&section=header&text=DESIGN.md&fontSize=50&fontColor=ffe53d&desc=A+Collection+of+Design+Languages&descSize=16&descAlignY=65)](https://github.com/kyechan99/capsule-render)
 
 </div>
 
