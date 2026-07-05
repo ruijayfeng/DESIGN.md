@@ -3,7 +3,7 @@
 > A premium dark-glass design system with macOS-native aesthetics, featuring frosted glass effects, precise spacing, and fluid micro-interactions.
 
 **Origin**: Reverse-engineered from [raycast.com](https://www.raycast.com)
-**Showcase**: [raycast-showcase.vercel.app](https://raycast-showcase.vercel.app)
+**Showcase**: Raycast's official website
 
 ---
 
