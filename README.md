@@ -18,7 +18,7 @@
 
 <br>
 
-[![capsule render](https://raw.githubusercontent.com/kyechan99/capsule-render/api/image?animation=fadeIn&color=gradient&customColorList=17,18,20&theme=pop-brutalism&section=header&text=Pop-Brutalism&fontSize=50&fontColor=ffe53d&desc=A+design+language+spec&descSize=16&descAlignY=65)](https://github.com/kyechan99/capsule-render)
+[![capsule render](https://capsule-render.vercel.app/api?animation=fadeIn&color=gradient&customColorList=0a0a0f,ff3df4,3dd5ff&section=header&text=Pop-Brutalism&fontSize=50&fontColor=ffe53d&desc=A+design+language+spec&descSize=16&descAlignY=65&type=wave)](https://github.com/kyechan99/capsule-render)
 
 </div>
 
