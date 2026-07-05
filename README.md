@@ -34,7 +34,7 @@ Great design lives inside production CSS — buried in variable names, class con
 | File | Style | Origin | Key Traits |
 |------|-------|--------|------------|
 | [`pop-brutalism-DESIGN.md`](./pop-brutalism-DESIGN.md) | Pop-Brutalism | [app.ziwei.pro](https://app.ziwei.pro) | Hard shadows, halftone textures, neon palette, micro-rotation |
-| *more coming soon* | | | |
+| [`reveal-mask-DESIGN.md`](./reveal-mask-DESIGN.md) | Reveal-Mask | [ruijayfeng](https://github.com/ruijayfeng) | Mouse-tracking mask reveal, CSS radial-gradient, minimal dark UI |
 
 <br>
 
