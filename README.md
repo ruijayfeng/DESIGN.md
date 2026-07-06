@@ -35,6 +35,7 @@ Great design lives inside production CSS — buried in variable names, class con
 |------|-------|--------|------------|
 | [`pop-brutalism-DESIGN.md`](./pop-brutalism-DESIGN.md) | Pop-Brutalism | [app.ziwei.pro](https://app.ziwei.pro) | Hard shadows, halftone textures, neon palette, micro-rotation |
 | [`reveal-mask-DESIGN.md`](./reveal-mask-DESIGN.md) | Reveal-Mask | [ruijayfeng](https://github.com/ruijayfeng) | Mouse-tracking mask reveal, CSS radial-gradient, minimal dark UI |
+| [`komorebi-DESIGN.md`](./komorebi-DESIGN.md) | Komorebi | [perfectdays-movie.jp](https://perfectdays-movie.jp/en/) | 木漏れ日光影效果、极简黑白、电影感排版、缓慢动画 |
 
 <br>
 
