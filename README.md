@@ -39,6 +39,7 @@ Great design lives inside production CSS — buried in variable names, class con
 | [`liquid-glass-saas-DESIGN.md`](./liquid-glass-saas-DESIGN.md) | Liquid Glass SaaS | motionsites | 液态玻璃特效、荧光绿、极暗色背景、3D 悬浮 |
 | [`flowmate-minimalism-DESIGN.md`](./flowmate-minimalism-DESIGN.md) | FlowMate Minimalism | motionsites | 极简留白、衬线体排版、侧边栏布局、优雅过渡 |
 | [`cosmic-minimalism-DESIGN.md`](./cosmic-minimalism-DESIGN.md) | Portfolio Cosmic | motionsites | 纯黑白对比、冷蓝渐变、极简留白、网格系统 |
+| [`raycast-glass-DESIGN.md`](./raycast-glass-DESIGN.md) | Raycast Glass | motionsites | 毛玻璃特效、深色主题、圆角卡片、微妙阴影 |
 
 <br>
 
