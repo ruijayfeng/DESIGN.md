@@ -1,106 +1,399 @@
-# Liquid Glass SaaS Design System
+# Liquid Glass SaaS DESIGN.md
 
-## Overview
+> A dark SaaS landing page aesthetic built around **liquid glass** glassmorphism, neon-green accents, and cinematic video backgrounds. Originated from the "APEX" revenue growth platform hero.
 
-A futuristic SaaS landing page design language featuring **liquid glass effects** over deep purple-black backgrounds with electric green accents. Originated from a SaaS hero section prototype designed for "APEX" revenue growth platform.
+**Origin**: [motionsites.ai](https://motionsites.ai) — Section #9 "Apex SaaS Hero" / Section #17 "Planet Orbit"
+**Showcase**: [liquid-glass-saas.vercel.app](https://liquid-glass-saas-demo-268ykug34-fengk677-2300s-projects.vercel.app)
 
-Core philosophy: Create depth and premium feel through layered glassmorphism, gradient borders, and high-contrast neon accents against near-black backgrounds.
+---
 
-## Color Tokens
+## Core Philosophy
 
-```css
-:root {
-  /* Background */
-  --bg-primary: hsl(260 87% 3%);      /* Near-black with slight purple */
-  --bg-secondary: hsl(240 4% 16%);    /* Dark surface */
-  --bg-tertiary: hsl(240 4% 20%);     /* Borders */
+Liquid Glass SaaS lives on **one tension**:
 
-  /* Text */
-  --text-primary: hsl(40 6% 95%);     /* Warm off-white */
-  --text-heading: hsl(40 10% 96%);    /* Brightest text */
-  --text-sub: hsl(40 6% 82%);         /* Secondary text */
-  --text-muted: hsl(240 4% 16%);      /* Muted text */
+| Axis | Cold | Warm | How |
+|------|------|------|-----|
+| Background | Deep near-black + purple tint | Warm off-white text | Contrast hierarchy |
+| Surface | Barely-visible glass (1% white) | Frosted blur edges | ::before gradient border |
+| Accent | Electric green (#87FB89) | Neutral grays (#9A9A9A) | Green for action only |
 
-  /* Accent */
-  --accent-primary: hsl(121 95% 76%); /* Electric green #87FB89 */
-  --accent-text: hsl(0 0% 5%);        /* Dark text on green buttons */
-}
+The result: an interface that feels like **looking through frosted glass at a glowing screen** — premium, mysterious, action-oriented.
 
-/* Dark mode only (no toggle) */
-[data-theme="dark"] {
-  background: var(--bg-primary);
-  color: var(--text-primary);
-}
-```
+---
 
-## Typography
+## 1. Color System
 
-```css
-/* Primary font */
-@import url('https://fonts.googleapis.com/css2?family=Geist+Sans:wght@400;500;600;700&display=swap');
+### HSL Tokens (:root)
 
-:root {
-  --font-sans: 'Geist Sans', system-ui, sans-serif;
-  --font-serif: 'Playfair Display', serif; /* For decorative headings only */
-  --font-mono: 'Space Grotesk', monospace; /* For code/technical content */
-}
+All colors defined as HSL CSS custom properties following Tailwind CSS variables convention:
 
-body {
-  font-family: var(--font-sans);
-  font-weight: 400;
-  line-height: 1.6;
-  letter-spacing: 0.02em;
-}
+| Role | HSL | Hex | Use |
+|------|-----|-----|-----|
+| `--background` | `260 87% 3%` | `#07050a` | Page background — near-black with faint purple |
+| `--foreground` | `40 6% 95%` | `#f0efe9` | Body text — warm off-white, softer than pure white |
+| `--hero-heading` | `40 10% 96%` | `#f5f4ed` | Main headline — brightest text on page |
+| `--hero-sub` | `40 6% 82%` | `#d6d4c9` | Subheadline — muted warmth |
+| `--primary` | `121 95% 76%` | `#87FB89` | **Electric green** — CTA buttons, key accents |
+| `--primary-foreground` | `0 0% 5%` | `#0d0d0d` | Text on green buttons |
+| `--secondary` | `240 4% 16%` | `#292930` | Card backgrounds, nav elements |
+| `--muted` | `240 4% 16%` | `#292930` | Same as secondary, for muted surfaces |
+| `--muted-foreground` | `240 5% 65%` | `#a3a3ab` | Secondary body text |
+| `--border` | `240 4% 20%` | `#33333a` | Subtle dividers |
+| `--ring` | `262 83% 58%` | `#7c3aed` | Focus ring, highlights |
+| `--radius` | `0.75rem` | — | Standard border radius (12px) |
 
-h1, h2, h3 {
-  font-family: var(--font-sans);
-  font-weight: 600;
-  letter-spacing: -0.01em;
-  line-height: 1.05;
-}
+### Glass Surface Colors
 
-h1 { font-size: clamp(2.8rem, 8vw, 6rem); }
-h2 { font-size: clamp(2rem, 6vw, 4rem); }
-h3 { font-size: clamp(1.2rem, 4vw, 2.5rem); }
+The liquid-glass effect does not use solid background colors. Instead, it overlays a nearly-invisible layer:
 
-/* Special formatting */
-.eyebrow {
-  font-size: 0.75rem;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: hsl(40 6% 82% / 0.6);
-}
-```
+| Property | Value | Effect |
+|----------|-------|--------|
+| Base fill | `rgba(255,255,255,0.01)` | 1% white — virtually transparent |
+| Border highlight (top) | `rgba(255,255,255,0.45)` | Strong light reflection |
+| Border highlight (middle) | `rgba(255,255,255,0)` | Transparent gap — creates "glass edge" illusion |
+| Border highlight (bottom) | `rgba(255,255,255,0.45)` | Match top reflection |
+| Inset shadow | `rgba(255,255,255,0.1)` | Subtle inner glow |
 
-## Component Styles
+**Key insight**: The glass effect relies entirely on the `::before` pseudo-element's vertical gradient border and a 4px backdrop blur. No solid backgrounds, no drop shadows — pure edge lighting.
 
-### 1. Liquid Glass Pill (Primary UI Element)
+---
+
+## 2. Typography
+
+### Single Font Stack
+
+Unlike Pop-Brutalism's four-layer stack, Liquid Glass uses **one clean font** across everything — matching the SaaS product's minimalist branding:
+
+| Layer | Font Stack | Use Case | Weight |
+|-------|-----------|----------|--------|
+| **All** | `Geist Sans` → `Inter` → `system-ui, sans-serif` | Headlines, body, buttons, labels | 400 / 500 / 600 / 700 |
+
+**Implementation**: `@fontsource/geist-sans` installed, loaded at 400, 500, 600, 700 weights.
+
+**Design intent**:
+- Geist Sans is a modern, geometric sans-serif designed by Vercel — neutral enough to not compete with the glass aesthetic
+- Tracking is tight (`tracking-tight`) on headings to create a compact, premium feel
+- Line height is `1.05` for large headlines — compressed, editorial
+- Body text uses `leading-8` — generous for readability over video
+
+---
+
+## 3. The Liquid Glass Formula
+
+Every glass element follows this **exact CSS recipe**:
 
 ```css
 .liquid-glass {
+  /* Barely visible base */
   background: rgba(255, 255, 255, 0.01);
   background-blend-mode: luminosity;
+  
+  /* Frosted edge */
   backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  
+  /* No solid border */
   border: none;
+  
+  /* Subtle inner glow */
   box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.1);
-  overflow: hidden;
+  
+  /* Required for gradient border */
   position: relative;
+  overflow: hidden;
 }
 
-/* Vertical gradient border using pseudo-element */
+/* Gradient edge — this is what makes it "glass" */
 .liquid-glass::before {
   content: '';
   position: absolute;
   inset: 0;
+  border-radius: inherit;
   padding: 1.4px;
+  background: linear-gradient(180deg,
+    rgba(255,255,255,0.45) 0%,   /* top reflection */
+    rgba(255,255,255,0.15) 20%,
+    rgba(255,255,255,0) 40%,     /* gap — creates edge separation */
+    rgba(255,255,255,0) 60%,
+    rgba(255,255,255,0.15) 80%,
+    rgba(255,255,255,0.45) 100%  /* bottom reflection */
+  );
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+}
+```
+
+### Border Radius Scale
+
+| Token | Value | Use |
+|-------|-------|-----|
+| Default | `0.75rem` (12px) | Cards, nav container |
+| `rounded-3xl` | `1.5rem` (24px) | Navbar pill |
+| `rounded-full` | `9999px` | Badge pills, CTA buttons |
+| `rounded-xl` | `0.75rem` (12px) | Smaller buttons |
+| `rounded-lg` | `0.5rem` (8px) | Icon containers, logo squares |
+
+---
+
+## 4. Component Kit
+
+### Hero CTA Buttons
+
+Two button variants defined via class-variance-authority:
+
+```css
+/* Primary — solid green */
+.btn-hero {
+  background: var(--primary); /* #87FB89 */
+  color: var(--primary-foreground); /* #0d0d0d */
+  border-radius: 9999px;
+  padding: 12px 24px;
+  font-size: 16px;
+  font-weight: 500;
+  transition: background 0.2s;
+}
+.btn-hero:hover {
+  background: hsl(121 95% 76% / 0.9);
+}
+
+/* Secondary — glass outline */
+.btn-hero-secondary {
+  background: transparent;
+  border: none;
+  color: var(--foreground);
+  border-radius: 9999px;
+  padding: 12px 24px;
+  font-size: 16px;
+  font-weight: 400;
+}
+.btn-hero-secondary:hover {
+  background: rgba(255,255,255,0.05);
+}
+```
+
+### Nav Pill
+
+The top navbar is a horizontal glass container:
+
+```css
+.nav-pill {
+  max-width: 850px;
+  width: 100%;
+  border-radius: 1.5rem; /* rounded-3xl */
+  padding: 0.5rem;
+  /* inherits .liquid-glass base */
+}
+
+.nav-link {
+  padding: 8px 12px;
+  font-size: 16px;
+  color: hsl(40 6% 95% / 0.9); /* foreground/90 */
+  transition: color 0.2s;
+}
+.nav-link:hover {
+  color: var(--foreground);
+}
+```
+
+### Announcement Badge
+
+Small pill at the top of the hero:
+
+```css
+.badge-pill {
+  border-radius: 9999px;
+  padding: 4px 12px 4px 20px; /* extra left padding for text */
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  /* inherits .liquid-glass */
+}
+
+.badge-chip {
+  background: rgba(255,255,255,0.05);
+  padding: 2px 12px;
+  border-radius: 9999px;
+  font-size: 11px;
+}
+```
+
+### Brand Marquee Item
+
+Each brand in the scrolling logo marquee:
+
+```css
+.marquee-brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+  white-space: nowrap;
+}
+
+.marquee-icon {
+  width: 24px;
+  height: 24px;
+  border-radius: 8px;
+  /* inherits .liquid-glass */
+}
+
+.marquee-letter {
+  font-size: 12px;
+  font-weight: 700;
+  color: hsl(40 6% 95% / 0.7);
+}
+
+.marquee-name {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--foreground);
+}
+```
+
+---
+
+## 5. Background & Texture System
+
+### Video Background
+
+The entire page is backed by a **full-screen looping video**:
+
+```css
+.page-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+}
+```
+
+Video is always autoplay, loop, muted, playsInline. Content sits at `z-index: 1` above it.
+
+### Gradient Overlay (Optional)
+
+For contrast when video is too busy:
+
+```css
+.video-overlay {
+  position: absolute;
+  inset: 0;
   background: linear-gradient(
     180deg,
-    rgba(255, 255, 255, 0.45) 0%,
-    rgba(255, 255, 255, 0.15) 20%,
-    rgba(255, 255, 255, 0) 40%,
-    rgba(255, 255, 255, 0) 60%,
-    rgba(255, 255, 255, 0.15) 80%,
-    rgba(255, 255, 255, 0.45) 100%
+    var(--background) 0%,
+    transparent 30%,
+    transparent 70%,
+    var(--background) 100%
+  );
+  pointer-events: none;
+}
+```
+
+The vertical gradient fades to solid background at top and bottom, leaving the video visible in the center.
+
+### No Halftone / No Texture
+
+Unlike Pop-Brutalism, Liquid Glass has **zero patterns**. The depth comes entirely from:
+1. Video layer underneath
+2. Glass surface on top
+3. Gradient edge lighting on glass
+
+---
+
+## 6. Animation Catalog
+
+| Name | Effect | Duration | Use |
+|------|--------|----------|-----|
+| fade-up | `translateY(16px)→0` + opacity `0→1` | 0.6–0.8s | Element entrance (headline, subhead, CTAs) |
+| stagger | Same as fade-up, children delayed 0.15s | 0.8s total | Section title + description |
+| marquee | `translateX(0%)→translateX(-50%)` | 20s linear infinite | Brand logo loop |
+| hover-scale | `scale(1)→1.05` | 0.2s ease | CTA buttons, nav links |
+| hover-glass | `background: rgba(255,255,255,0.05)` | 0.2s | Secondary CTA fill on hover |
+
+**Entrance sequence for hero section** (staggered cascade):
+
+1. **0ms**: Badge badge fades in
+2. **200ms**: Headline characters animate left-to-right (if using split-text)
+3. **400ms**: Subheadline fades up
+4. **600ms**: CTA buttons fade up
+5. **800ms**: Social proof section fades up
+
+---
+
+## 7. Layout Anatomy
+
+### Three-Section Vertical Stack
+
+| Section | Vertical Position | Content |
+|---------|------------------|---------|
+| Navbar | Fixed, top, `py-5` | Logo + nav links + Sign Up CTA |
+| Hero | `pt-20`, centered | Badge → h1 → sub → 2 CTAs |
+| Social Proof | `pt-16 pb-24` | Stats row → spacer → brand marquee |
+
+### Responsive Breakpoints
+
+| Breakpoint | Layout |
+|------------|--------|
+| `< 640px` (sm) | Single column, full-width nav pill, h1 text-4xl |
+| `640–1023px` (md–lg) | h1 text-6xl, nav items visible |
+| `≥ 1024px` (xl) | h1 text-7xl, max-w-5xl centered, max nav width 850px |
+
+### Max Widths
+
+| Element | Max Width |
+|---------|-----------|
+| Navbar container | `850px` |
+| Hero heading | `5xl` (80rem / ~1280px) |
+| Subheading | `md` (42rem / ~672px) |
+| Social proof marquee | `5xl` (80rem) |
+
+---
+
+## 8. Quick Start
+
+### Minimal Copy-Paste
+
+```css
+/* 1. Register tokens in :root */
+:root {
+  --background: hsl(260 87% 3%);
+  --foreground: hsl(40 6% 95%);
+  --primary: hsl(121 95% 76%);     /* #87FB89 */
+  --primary-foreground: hsl(0 0% 5%);
+  --secondary: hsl(240 4% 16%);
+  --muted-foreground: hsl(240 5% 65%);
+  --border: hsl(240 4% 20%);
+  --ring: hsl(262 83% 58%);
+  --radius: 0.75rem;
+}
+
+/* 2. The glass utility */
+.liquid-glass {
+  background: rgba(255, 255, 255, 0.01);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.1);
+  position: relative;
+  overflow: hidden;
+}
+
+.liquid-glass::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1.4px;
+  background: linear-gradient(180deg,
+    rgba(255,255,255,0.45) 0%,
+    rgba(255,255,255,0.15) 20%,
+    rgba(255,255,255,0) 40%,
+    rgba(255,255,255,0) 60%,
+    rgba(255,255,255,0.15) 80%,
+    rgba(255,255,255,0.45) 100%
   );
   -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
   -webkit-mask-composite: xor;
@@ -108,217 +401,80 @@ h3 { font-size: clamp(1.2rem, 4vw, 2.5rem); }
   pointer-events: none;
 }
 
-/* Button variant */
-.liquid-glass-btn {
-  border-radius: 9999px; /* rounded-full */
-  padding: 12px 24px;
-  color: var(--text-primary);
-  transition: all 0.3s ease;
-}
-
-.liquid-glass-btn:hover {
-  background: rgba(255, 255, 255, 0.05);
-}
-```
-
-### 2. Electric Green Button
-
-```css
+/* 3. Green CTA button */
 .btn-primary {
-  background: var(--accent-primary);
-  color: var(--accent-text);
-  font-weight: 500;
-  border-radius: 12px;
-  padding: 16px 32px;
-  transition: all 0.3s ease;
-}
-
-.btn-primary:hover {
-  background: hsl(121 95% 66%); /* Slightly darker green */
-  transform: translateY(-1px);
-}
-
-.btn-primary:focus-visible {
-  outline: 2px solid var(--accent-primary);
-  outline-offset: 2px;
-}
-```
-
-### 3. Announcement Badge
-
-```css
-.announcement-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 12px;
-  padding: 8px 16px;
+  background: var(--primary);
+  color: var(--primary-foreground);
   border-radius: 9999px;
-  font-size: 0.875rem;
+  padding: 12px 24px;
   font-weight: 500;
 }
 
-.announcement-badge .chip {
-  display: inline-flex;
-  align-items: center;
-  gap: 4px;
-  padding: 4px 12px;
-  background: rgba(255, 255, 255, 0.05);
+/* 4. Glass secondary button */
+.btn-glass {
+  color: var(--foreground);
   border-radius: 9999px;
-  font-size: 0.75rem;
+  padding: 12px 24px;
+}
+.btn-glass:hover {
+  background: rgba(255,255,255,0.05);
 }
 ```
 
-## Textures / Patterns
+```jsx
+// React usage
+import './styles.css';
 
-### Glass Morphism Effect
-```css
-.glass-card {
-  background: linear-gradient(
-    135deg,
-    rgba(255, 255, 255, 0.05) 0%,
-    rgba(255, 255, 255, 0.01) 100%
+export function Hero() {
+  return (
+    <section className="relative overflow-hidden" style={{ background: 'var(--background)' }}>
+      <video autoPlay loop muted playsInline className="absolute inset-0 w-full h-full object-cover" />
+      
+      <div className="relative z-10 flex flex-col items-center pt-20 px-4">
+        {/* Nav pill */}
+        <nav className="liquid-glass rounded-3xl max-w-[850px] w-full py-2 px-3 flex items-center justify-between gap-6">
+          <span className="font-semibold text-lg">APEX</span>
+          <div className="flex gap-2">
+            {['Features', 'Solutions', 'Plans'].map(link => (
+              <button key={link} className="text-base text-foreground/90 hover:text-foreground px-3 py-2 transition-colors">{link}</button>
+            ))}
+          </div>
+          <button className="bg-primary text-primary-foreground text-sm px-4 py-2 rounded-xl">Sign Up</button>
+        </nav>
+        
+        {/* Hero content */}
+        <div className="flex flex-col items-center mt-20">
+          <span className="liquid-glass rounded-full px-3 pr-1 py-1 mb-8 text-xs">
+            Nova+ Launched! <span className="bg-white/5 px-3 py-0.5 rounded-full">Explore →</span>
+          </span>
+          
+          <h1 className="text-4xl sm:text-6xl lg:text-7xl font-semibold tracking-tight text-center leading-[1.05] max-w-5xl" style={{ color: 'var(--hero-heading)' }}>
+            Accelerate Your<br/>Revenue Growth Now
+          </h1>
+          
+          <p className="text-lg mt-4 max-w-md text-center opacity-80" style={{ color: 'var(--hero-sub)' }}>
+            Drive your funnel forward with clever workflows, analytics, and seamless lead management.
+          </p>
+          
+          <div className="flex items-center gap-4 mt-8">
+            <button className="btn-primary">Start Free Right Now</button>
+            <button className="btn-glass">Schedule a Consult</button>
+          </div>
+        </div>
+      </div>
+    </section>
   );
-  backdrop-filter: blur(8px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 16px;
 }
 ```
 
-### Gradient Border Effect
-```css
-.gradient-border {
-  position: relative;
-  border-radius: 12px;
-}
+---
 
-.gradient-border::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  border-radius: 12px;
-  padding: 1px;
-  background: linear-gradient(
-    135deg,
-    rgba(255, 255, 255, 0.4),
-    rgba(135, 251, 137, 0.2),
-    rgba(255, 255, 255, 0.1)
-  );
-  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-  -webkit-mask-composite: xor;
-  mask-composite: exclude;
-}
-```
+## 9. Brand Mark
 
-## Animation / Motion
+The logo mark is a **gradient square with a crosshair SVG** — a circle with four radiating lines (N, S, E, W), all in white strokes. It sits inside a `rounded-lg` container with `bg-gradient-to-b from-secondary to-muted`.
 
-### Fade Up Entry Animation
-```css
-@keyframes fade-up {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
+Brand wordmark uses the single font (Geist Sans), text-xl, font-semibold, tracking-tight.
 
-.fade-up {
-  animation: fade-up 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-}
+---
 
-/* Staggered delays */
-.fade-up-delay-1 { animation-delay: 0.1s; }
-.fade-up-delay-2 { animation-delay: 0.2s; }
-.fade-up-delay-3 { animation-delay: 0.3s; }
-```
-
-### Marquee Scroll Animation
-```css
-@keyframes marquee-scroll {
-  0% { transform: translateX(0%); }
-  100% { transform: translateX(-50%); }
-}
-
-.marquee-scroll {
-  animation: marquee-scroll 20s linear infinite;
-  display: flex;
-  gap: 32px;
-}
-```
-
-## Theme Variants
-
-This design is **dark mode only** — no toggle. The near-black background with purple tint creates the primary brand experience.
-
-## Quick Start
-
-```html
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Liquid Glass SaaS</title>
-  <style>
-    :root {
-      --bg-primary: hsl(260 87% 3%);
-      --text-primary: hsl(40 6% 95%);
-      --accent-primary: hsl(121 95% 76%);
-      --font-sans: 'Inter', system-ui, sans-serif;
-    }
-
-    body {
-      background: var(--bg-primary);
-      color: var(--text-primary);
-      font-family: var(--font-sans);
-      margin: 0;
-    }
-
-    .liquid-glass {
-      background: rgba(255, 255, 255, 0.01);
-      backdrop-filter: blur(4px);
-      border-radius: 12px;
-      padding: 24px;
-      position: relative;
-    }
-
-    .liquid-glass::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      border-radius: 12px;
-      padding: 1.4px;
-      background: linear-gradient(
-        180deg,
-        rgba(255,255,255,0.45) 0%,
-        rgba(255,255,255,0) 50%,
-        rgba(255,255,255,0.45) 100%
-      );
-      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-      -webkit-mask-composite: xor;
-      mask-composite: exclude;
-      pointer-events: none;
-    }
-
-    .btn-accent {
-      background: var(--accent-primary);
-      color: black;
-      padding: 12px 24px;
-      border-radius: 8px;
-      font-weight: 600;
-      text-decoration: none;
-      display: inline-block;
-    }
-  </style>
-</head>
-<body>
-  <div class="liquid-glass">
-    <h1>Accelerate Your Growth</h1>
-    <p>Drive your funnel forward with clever workflows.</p>
-    <a href="#" class="btn-accent">Get Started</a>
-  </div>
-</body>
-</html>
-```
+*Reverse-engineered from motionsites.ai Sections #9 (Apex SaaS Hero) and #17 (Planet Orbit).*
