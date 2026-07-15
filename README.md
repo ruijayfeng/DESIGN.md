@@ -35,6 +35,10 @@ Great design lives inside production CSS — buried in variable names, class con
 |------|-------|--------|------------|
 | [`pop-brutalism-DESIGN.md`](./pop-brutalism-DESIGN.md) | Pop-Brutalism | [app.ziwei.pro](https://app.ziwei.pro) | Hard shadows, halftone textures, neon palette, micro-rotation |
 | [`reveal-mask-DESIGN.md`](./reveal-mask-DESIGN.md) | Reveal-Mask | [ruijayfeng](https://github.com/ruijayfeng) | Mouse-tracking mask reveal, CSS radial-gradient, minimal dark UI |
+| [`komorebi-DESIGN.md`](./komorebi-DESIGN.md) | Komorebi | [perfectdays-movie.jp](https://perfectdays-movie.jp/en/) | 木漏れ日光影效果、极简黑白、电影感排版、缓慢动画 |
+| [`liquid-glass-saas-DESIGN.md`](./liquid-glass-saas-DESIGN.md) | Liquid Glass SaaS | motionsites | 液态玻璃特效、荧光绿、极暗色背景、3D 悬浮 |
+| [`flowmate-minimalism-DESIGN.md`](./flowmate-minimalism-DESIGN.md) | FlowMate Minimalism | motionsites | 极简留白、衬线体排版、侧边栏布局、优雅过渡 |
+| [`cosmic-minimalism-DESIGN.md`](./cosmic-minimalism-DESIGN.md) | Portfolio Cosmic | motionsites | 纯黑白对比、冷蓝渐变、极简留白、网格系统 |
 
 <br>
 
